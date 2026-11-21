@@ -1,0 +1,1 @@
+{"edition":"202601","entrypoint":"index.html","min_sdk_version":"0.0.16","name":"Glance","package_id":"com.turas.glance","permissions":[{"desc":"Fetch live prices from the CoinGecko public API (read-only, no key).","name":"network","whitelist":["https://api.coingecko.com"]}],"supported_languages":["en"],"version":"0.1.0"}
