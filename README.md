@@ -18,8 +18,10 @@ they armed the alert, the glasses say so.
   triggers when the price moves ±5% from the price at arming time, and the
   header switches to an `ALERT BTC +5.2%` banner. Tapping the coin again
   acknowledges and disarms it.
-- **Long-press** refreshes prices immediately. **Double-tap** exits (system
-  confirmation dialog, as required on the root page).
+- **Long-press** refreshes prices immediately. **Double-tap** exits: the
+  handler calls the SDK shutdown for the root page. The system
+  confirmation dialog itself was not observed in the simulator
+  (see STATUS.md); on real hardware it should appear per the SDK docs.
 - **Phone:** the same state is shown as a companion UI in the WebView, so the
   app is usable and demoable in a plain browser too.
 - **Data:** CoinGecko public API (`/simple/price`), free, no API key, polled
@@ -44,7 +46,13 @@ The hackathon rules ask the README to say what existed before build week
   phone companion UI in `src/`.
 - 28 unit tests, the `app.json` manifest, and this README.
 
-Build-week work (Nov 23–29) will be listed here as it lands.
+Build-week work (Nov 23–29):
+- 23 Nov: demo video script + shot list (`docs/demo-video-script.md`),
+  voiceover narration, Jenny neural voice (`docs/voiceover/`), recording
+  pipeline + smoke test (`scripts/record-demo.py`,
+  `scripts/RECORDING-NOTES.md`). Full app re-verified the same day
+  (28/28 tests, build + pack pass).
+- 24 Nov: demo video recording (planned).
 
 ## Setup
 
@@ -65,8 +73,9 @@ npm run dev
 evenhub-simulator http://localhost:5173
 ```
 
-Click a row in the simulator canvas to toggle its alert. Double-click to see
-the exit dialog. The screenshot button exports the glasses display as a PNG
+Click a row in the simulator canvas to toggle its alert. Double-click sends
+the exit event (the handler runs; the system dialog was not observed in the
+simulator). The screenshot button exports the glasses display as a PNG
 (useful for the demo video).
 
 Headless verification (simulator automation API, port 9898):
@@ -128,10 +137,15 @@ src/
   __tests__/        Vitest suites for the three logic modules
 scripts/
   sim-check.py      Headless simulator verification (automation API)
+  record-demo.py    Demo video recorder (x11grab + control plane)
+  RECORDING-NOTES.md  Recording runbook + gotchas
 docs/
   simulator-vm-setup.md  Running the simulator on this Linux VM
   sim-2026-11-21-*.png   Verified simulator screenshots (boot/toggle/exit)
-REGISTRATION.md     What is needed to register on DoraHacks (not done by us)
+  demo-video-script.md   Demo video narration + shots (max 3 min)
+  voiceover/        Narration takes, Jenny voice (mp3 + text)
+  smoke-recording-test.mp4  24s recording pipeline smoke test
+REGISTRATION.md     DoraHacks registration (done 21 Nov 2026; submit steps inside)
 STATUS.md           Preparation status, gaps, and what doom must do
 out.ehpk            Packaged build (evenhub pack), optional for submission
 ```

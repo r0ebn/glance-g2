@@ -1,8 +1,6 @@
-# Registration — what is needed (NOT done by us)
+# Registration — DONE 21 Nov 2026 (akun DoraHacks lakusaturas, GitHub @r0ebn terhubung, solo, Demo Day remote)
 
-No account was created and nothing was signed in on doom's behalf. This file
-records exactly what registration requires, so doom can do it himself before
-kickoff (Monday 23 Nov 2026, 16:00 WITA).
+Dikonfirmasi di chat utama 21 Nov 21:23 WITA; repo publik https://github.com/r0ebn/glance-g2 dibuat dan terisi 21 Nov, diverifikasi 22 Nov 09:34 WITA lewat halaman GitHub. File ini menyimpan cara registrasi dilakukan, untuk referensi saat submit.
 
 ## 1. DoraHacks account (required to register + submit)
 
@@ -14,6 +12,9 @@ kickoff (Monday 23 Nov 2026, 16:00 WITA).
   default account) and connect GitHub (@r0ebn) to the same account. The
   submission needs a public GitHub repo URL anyway, and DoraHacks recommends
   connecting GitHub so people can see what you are building.
+- **What actually happened (21 Nov):** registration used Google sign-up
+  with lakusaturas@gmail.com (no email+password), GitHub @r0ebn connected
+  to the same account. See the header of this file.
 - **Email verification:** DoraHacks may send a verification code to the email
   address. The code does not expire within 10 minutes of clicking "send code".
 - **Cost:** free. No entry fee, no KYC mentioned for registration.
@@ -39,9 +40,9 @@ kickoff (Monday 23 Nov 2026, 16:00 WITA).
 ## 3. Public GitHub repo (required for submission)
 
 - The repo must be public so judges can open it.
-- Suggested: `github.com/r0ebn/glance-g2` (or any public repo under @r0ebn).
-- Pushing this code to GitHub needs doom's approval at the time; nothing has
-  been pushed yet.
+- DONE 21 Nov 2026: `github.com/r0ebn/glance-g2` (publik, 4 commit, 25 file).
+  Sinkron audit 23 Nov: +9 file (naskah video, pipeline rekaman, teks narasi)
+  → 34 file, 5 commit.
 
 ## 4. Even Realities developer access (NOT required for this entry)
 
@@ -54,8 +55,7 @@ kickoff (Monday 23 Nov 2026, 16:00 WITA).
 
 ## Checklist for doom (before kickoff, Mon 23 Nov 16:00 WITA)
 
-- [ ] DoraHacks account created + email verified
-- [ ] GitHub @r0ebn connected to the DoraHacks account
-- [ ] Click through registration on the hackathon page (confirm what the
-      register button asks for — it may just be the Submit BUIDL flow)
-- [ ] Approve pushing this repo to a public GitHub repo (name of his choice)
+- [x] DoraHacks account created + email verified (21 Nov 2026)
+- [x] GitHub @r0ebn connected to the DoraHacks account
+- [x] Registration confirmed on the hackathon page
+- [x] Repo pushed to public GitHub repo r0ebn/glance-g2

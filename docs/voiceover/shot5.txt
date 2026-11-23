@@ -1,0 +1,1 @@
+Long-press refreshes on demand. The same state lives on your phone, so the app is demoable anywhere.

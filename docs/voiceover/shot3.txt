@@ -1,0 +1,1 @@
+Tap a coin to arm an alert. If it moves five percent from this price, the glasses tell you.

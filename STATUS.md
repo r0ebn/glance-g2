@@ -1,7 +1,7 @@
 # Glance — Status persiapan G2 Hackathon
 
-Terakhir diperbarui: 21 Nov 2026, ~19:40 WITA.
-Repo: `~/workspace/g2-hackathon/`. Konsep: aplikasi glanceable read-only
+Terakhir diperbarui: 23 Nov 2026, ~12:30 WITA (audit pra-entry: tes 28/28, build + pack lolos ulang; naskah video, voiceover Jenny, pipeline rekaman siap; rekam video Selasa 24 Nov).
+Repo: `~/workspace/g2-hackathon/` dan https://github.com/r0ebn/glance-g2 (publik, 5 commit setelah sinkron 23 Nov, dibuat 2026-11-21T13:50:26Z). Konsep: aplikasi glanceable read-only
 CoinGecko untuk kacamata Even Realities G2, track Crypto & DeFi.
 
 ## Jadwal penting
@@ -21,14 +21,17 @@ hadiah uang.
 
 ## Yang sudah siap
 
+- **Registrasi DoraHacks SELESAI 21 Nov 2026** — akun lakusaturas, GitHub @r0ebn terhubung, solo, Demo Day remote. Dikonfirmasi di chat utama 21 Nov 21:23 WITA.
+- **Repo publik SELESAI 21 Nov 2026** — https://github.com/r0ebn/glance-g2, publik, 4 commit, 25 file (21 file + 3 screenshot simulator + out.ehpk), diverifikasi 22 Nov 09:34 WITA lewat halaman GitHub (commit terbaru 4fa24e1407b6dcbf900494741124122c9274ec97). Sinkron audit 23 Nov: +9 file (naskah video, pipeline rekaman, teks narasi) → 34 file, 5 commit.
 - **Repo lengkap di `~/workspace/g2-hackathon/`**: Vite + TypeScript,
   SDK `@evenrealities/even_hub_sdk@0.0.16`, CLI evenhub 0.2.0,
   simulator 0.9.5. Manifest `app.json` (package `com.turas.glance`).
 - **Aplikasi Glance jadi dan berfungsi**: daftar harga BTC/ETH/SOL/HYPE
   dari CoinGecko public API (tanpa key, polling 60 detik, backoff saat
   429), tap baris untuk arm/disarm alert ±5%, header menampilkan banner
-  ALERT saat harga melewati ambang. Companion UI di HP memakai logika
-  yang sama.
+  ALERT saat harga melewati ambang (state machine terverifikasi 9
+  unit test; banner terpicu belum teramati live di simulator).
+  Companion UI di HP memakai logika yang sama.
 - **Unit test 28/28 lolos** (alerts 9, coingecko 8, render 11).
 - **Build lolos** (`tsc` + Vite, `dist/` terhasilkan).
 - **Pack lolos**: `out.ehpk` 40.131 byte, `evenhub pack` sukses
@@ -53,8 +56,8 @@ hadiah uang.
   sistem, environment, cara jalan + verifikasi). Di PC Windows doom
   tidak perlu semua itu: cukup Node.js LTS + dua paket global.
 - **Riset registrasi selesai**: `REGISTRATION.md` — cara daftar
-  DoraHacks, akun yang dibutuhkan, alur submit. Belum ada yang
-  didaftarkan atau di-sign-in atas nama doom.
+  DoraHacks, akun yang dibutuhkan, alur submit. Registrasi SUDAH
+  dilakukan 21 Nov (Google sign-up lakusaturas@gmail.com).
 - **README** berisi cara build/run, pengungkapan pra-23-Nov yang
   diwajibkan aturan (scaffold + implementasi awal disiapkan 21 Nov),
   dan catatan desain (termasuk: tidak ada background alert, karena G2
@@ -62,11 +65,10 @@ hadiah uang.
 
 ## Yang belum siap / celah
 
-- **Registrasi DoraHacks belum dilakukan** — butuh doom (lihat bawah).
-- **Repo belum di-push ke GitHub publik** — submission wajib repo publik.
-  Butuh persetujuan doom sebelum push (nama repo + visibilitas publik).
 - **Video demo belum dibuat** (maks 3 menit, simulator atau G2).
-  Dibuat saat build week; screenshot button simulator + rekaman layar
+  Naskah + shot list siap di docs/demo-video-script.md (23 Nov).
+  Rekam Selasa 24 Nov (doom memilih lebih awal dari rencana awal
+  Jumat 28 Nov); screenshot button simulator + rekaman layar
   bisa dipakai. Doom belum punya kacamata G2 — demo memakai simulator.
 - **Dialog keluar (exit confirmation) tidak teramati di simulator**:
   event double-click sampai ke aplikasi (eventType 3 tercatat di
@@ -84,20 +86,12 @@ hadiah uang.
   versi sekarang sudah memenuhi kriteria juri (usefulness, read+write
   via tap, eksekusi teknis, UX glance, safety).
 
-## Yang dibutuhkan dari doom sebelum kickoff Senin 16:00 WITA
+## Yang dibutuhkan dari doom selama build week
 
-1. **Akun DoraHacks** — daftar di dorahacks.io dengan email
-   lakusaturas@gmail.com, verifikasi email (kode verifikasi dikirim
-   ke email). Gratis, tanpa KYC untuk registrasi.
-2. **Hubungkan GitHub @r0ebn** ke akun DoraHacks (untuk submit repo).
-3. **Konfirmasi registrasi** di halaman hackathon
-   (https://dorahacks.io/hackathon/even-realities/detail) — klik
-   Register/Join pada hackathon Even Realities. Solo (tim 1 orang)
-   diperbolehkan.
-4. **Setujui push ke repo GitHub publik** — nama repo yang diusulkan:
-   `r0ebn/glance-g2` (atau nama lain pilihan doom). Submission wajib
-   repo publik + README + video demo.
-5. **(Nanti, bila menang)** alamat wallet USDT untuk menerima hadiah —
+Registrasi dan repo publik sudah beres (lihat atas). Yang tersisa:
+video demo maks 3 menit (naskah + narasi siap, rekam Selasa 24 Nov).
+
+1. **(Nanti, bila menang)** alamat wallet USDT untuk menerima hadiah —
    cara pengumpulannya belum didokumentasikan di halaman publik;
    dikonfirmasi saat pengumuman finalis. Wallet TIDAK dibutuhkan
    untuk registrasi atau submit.
