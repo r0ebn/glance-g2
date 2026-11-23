@@ -1,4 +1,4 @@
-# Glance — CoinGecko prices + alerts for Even G2
+# Glance — Hyperliquid prices + alerts for Even G2
 
 Entry for the **Heads Up: Even Realities Hackathon** (TVM Ventures × Daos Hub),
 **Track 02 · Crypto & DeFi**. Solo entry by Turas (@r0ebn).
@@ -13,7 +13,7 @@ they armed the alert, the glasses say so.
 ## How it works
 
 - **Glasses (576×288):** a header line plus a 4-row watchlist — BTC, ETH, SOL,
-  HYPE — with live price and 24h change from CoinGecko.
+  HYPE — with live price and 24h change from Hyperliquid.
 - **Tap a row** to arm or disarm a ±5% price alert for that coin. The alert
   triggers when the price moves ±5% from the price at arming time, and the
   header switches to an `ALERT BTC +5.2%` banner. Tapping the coin again
@@ -24,15 +24,18 @@ they armed the alert, the glasses say so.
   (see STATUS.md); on real hardware it should appear per the SDK docs.
 - **Phone:** the same state is shown as a companion UI in the WebView, so the
   app is usable and demoable in a plain browser too.
-- **Data:** CoinGecko public API (`/simple/price`), free, no API key, polled
-  every 60 seconds. One request fetches all four coins. A 429 response backs
-  off exponentially (60s → 5 min max); a failed fetch keeps the last good data
+- **Data:** Hyperliquid public info API, free, no API key, polled
+  every 60 seconds. One `allMids` request fetches all four mid prices;
+  four 1h-candle requests give the rolling 24h change (HYPE via the
+  @107 spot pair). A 429 response backs off exponentially
+  (60s → 5 min max); a failed fetch keeps the last good data
   and marks it STALE.
 
 ## Track compliance
 
-- Uses **only CoinGecko**, one of the apps listed in the Crypto & DeFi track
-  (Polymarket, Kalshi, Hyperliquid, CoinGecko, Gram Wallet, Trust Wallet).
+- Uses **only Hyperliquid**, one of the apps listed in the Crypto & DeFi track
+  (Gram Wallet, Polymarket, Hyperliquid, Trust Wallet). Switched from
+  CoinGecko on 23 Nov 2026: CoinGecko is not on the track's list.
 - **Read-only.** No orders, no bets, no funds held, no financial advice.
 - No API keys or secrets anywhere in the repo or the app.
 
@@ -42,8 +45,9 @@ The hackathon rules ask the README to say what existed before build week
 (Nov 23). Prepared on 21 Nov 2026, before build week:
 
 - This Vite + TypeScript scaffold with the Even Hub SDK (0.0.16) wired in.
-- The CoinGecko client, alert state machine, glasses rendering, and the
-  phone companion UI in `src/`.
+- The CoinGecko data client (replaced by the Hyperliquid client on
+  23 Nov, build week — see below), alert state machine, glasses
+  rendering, and the phone companion UI in `src/`.
 - 28 unit tests, the `app.json` manifest, and this README.
 
 Build-week work (Nov 23–29):
@@ -52,6 +56,11 @@ Build-week work (Nov 23–29):
   pipeline + smoke test (`scripts/record-demo.py`,
   `scripts/RECORDING-NOTES.md`). Full app re-verified the same day
   (28/28 tests, build + pack pass).
+- 23 Nov: data source switched from CoinGecko to Hyperliquid for track
+  compliance (CoinGecko is not on the Track 02 allowed-apps list;
+  Hyperliquid is). New `src/hyperliquid.ts` client + 15 tests
+  (35/35 total), build + pack pass, simulator re-verified end-to-end
+  with live Hyperliquid prices (see `docs/sim-2026-11-23/`).
 - 24 Nov: demo video recording (planned).
 
 ## Setup
@@ -113,7 +122,7 @@ developer mode.
 | `npm run dev`     | Vite dev server with hot reload               |
 | `npm run build`   | Type check (`tsc`) + production build (`dist/`) |
 | `npm run preview` | Serve the production build locally            |
-| `npm test`        | Unit tests (vitest), 28 tests                 |
+| `npm test`        | Unit tests (vitest), 35 tests                 |
 | `npm run typecheck` | Type check only                             |
 
 Package the optional `.ehpk` build for submission:
@@ -126,11 +135,11 @@ evenhub pack app.json dist   # produces out.ehpk
 ## Project layout
 
 ```
-app.json            Even Hub manifest (network whitelist: api.coingecko.com)
+app.json            Even Hub manifest (network whitelist: api.hyperliquid.xyz)
 index.html          Phone companion UI shell
 src/
   main.ts           Bridge wiring, poll loop, events, companion UI
-  coingecko.ts      CoinGecko client (fetch, parse, 429 backoff)
+  hyperliquid.ts    Hyperliquid client (mids + candles, parse, 429 backoff)
   alerts.ts         Alert state machine (pure, tested)
   render.ts         Glasses text/list rendering (pure, tested)
   style.css         Companion UI styles
@@ -165,15 +174,16 @@ out.ehpk            Packaged build (evenhub pack), optional for submission
 - **No background alerts.** G2 cannot show anything while the user has
   switched away, so alerts only fire while the app is open. The README and
   the demo say so honestly instead of promising push alerts.
-- **Direct CoinGecko fetch, no backend.** The public API answers CORS
-  (`Access-Control-Allow-Origin: *`, verified live) and needs no key, so
-  there is no secret to protect and no server to run. If the real-device
-  WebView ever blocks it, the fallback is a tiny same-origin proxy; the
-  `app.json` network whitelist already covers `https://api.coingecko.com`.
+- **Direct Hyperliquid fetch, no backend.** The public info API answers CORS
+  (`Access-Control-Allow-Origin: *`, verified live 23 Nov 2026) and needs no
+  key, so there is no secret to protect and no server to run. If the
+  real-device WebView ever blocks it, the fallback is a tiny same-origin
+  proxy; the `app.json` network whitelist already covers
+  `https://api.hyperliquid.xyz`.
 
 ## Links
 
 - Hackathon: https://dorahacks.io/hackathon/even-realities/detail
 - Even Hub docs: https://hub.evenrealities.com/docs/get-started/quickstart/first-app
 - Simulator docs: https://hub.evenrealities.com/docs/test/simulator
-- CoinGecko API: https://docs.coingecko.com/reference/simple-price
+- Hyperliquid API: https://hyperliquid.gitbook.io/hyperliquid-docs/for-developers/api/info-endpoint

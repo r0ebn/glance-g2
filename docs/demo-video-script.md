@@ -1,26 +1,29 @@
 # Glance — Demo video script (max 3 minutes)
 
 Prepared: 23 Nov 2026, ~10:35 WITA, hours before G2 kickoff (16:00 WITA).
-Status of the app this morning, re-verified by running the repo:
-28/28 unit tests pass, `npm run build` passes. No code changed for this script.
+Status of the app, re-verified 23 Nov after the Hyperliquid switch:
+35/35 unit tests pass, `npm run build` passes, pack passes.
+Data source switched from CoinGecko to Hyperliquid on 23 Nov 2026 for
+track compliance (CoinGecko is not on the Track 02 allowed-apps list);
+narration shot 2 re-recorded with Jenny the same day.
 
 ## Rules the video must respect
 
 - Max 3 minutes, recorded in the Even Hub simulator (doom has no G2 glasses).
-- Show only what is verified: live CoinGecko prices, tap to arm/disarm a
+- Show only what is verified: live Hyperliquid prices, tap to arm/disarm a
   ±5% alert, the ALERT banner, long-press refresh, phone companion UI.
 - Do NOT claim the exit dialog appears on screen: on 21 Nov the double-tap
   event reached the app and the handler ran, but no dialog showed in the
   simulator framebuffer. Say "double-tap to exit" and cut before the dialog,
   or show the phone UI instead.
-- Read-only, CoinGecko only, no orders, no financial advice. Say so once.
+- Read-only, Hyperliquid only, no orders, no financial advice. Say so once.
 
 ## Narration + shots (total ~2:40, leaves 20s spare)
 
 | Time | Shot (simulator) | Narration (English, calm, one sentence per shot) |
 | --- | --- | --- |
 | 0:00–0:15 | Simulator glasses frame, watchlist loading then live prices | "Traders check prices dozens of times a day. Glance puts the four coins you care about on your glasses, one look, no phone." |
-| 0:15–0:45 | Slow pan over the 4 rows: BTC, ETH, SOL, HYPE with price + 24h change | "Bitcoin, Ethereum, Solana and Hyperliquid, live from CoinGecko, refreshed every minute. No key, no account, read only." |
+| 0:15–0:45 | Slow pan over the 4 rows: BTC, ETH, SOL, HYPE with price + 24h change | "Bitcoin, Ethereum, Solana and Hyperliquid, live from Hyperliquid, refreshed every minute. No key, no account, read only." |
 | 0:45–1:20 | Click ETH row, `!` marker appears; explain arming | "Tap a coin to arm an alert. If it moves five percent from this price, the glasses tell you." |
 | 1:20–1:50 | Triggered state: header ALERT banner. No live trigger is possible without a real ±5% move, and no simulation hook exists, so cut in the 21 Nov toggle screenshot as a cutaway. That still shows the ARMED state (`!`), not the triggered banner — the narration describes the banner, the still shows the armed coin. Do not present the still as the triggered state. | "When the move happens, the header becomes an alert banner. Tap again to acknowledge and disarm." |
 | 1:50–2:15 | Long-press to refresh; then phone companion UI in the browser | "Long-press refreshes on demand. The same state lives on your phone, so the app is demoable anywhere." |

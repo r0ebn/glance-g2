@@ -12,6 +12,9 @@ Simulator setup (libs, env vars): `docs/simulator-vm-setup.md`.
   confirmed (live CoinGecko prices + ETH armed with `!`).
   Clip: `docs/smoke-recording-test.mp4`
   (+ `.ffmpeg.log` and `.frames/` beside it).
+  NOTE 23 Nov: the data source has since switched to Hyperliquid
+  (track compliance) — Tuesday's recording shows Hyperliquid prices;
+  the pipeline itself is unchanged.
 - Screenshot-API fallback was NOT needed and is untested; see §7.
 
 ## 1. Tuesday runbook (exact commands, in order)
@@ -168,7 +171,7 @@ ffmpeg -i docs/demo-raw.mp4 -vf "crop=596:800:364:140" phone.mp4
 
 - The banner (`ALERT ETH +5.0%` in the header) triggers ONLY on a real
   +/-5% price move from the armed base price, checked on the 60 s
-  CoinGecko poll. Confirmed by reading `src/alerts.ts` + `src/main.ts`:
+  Hyperliquid poll. Confirmed by reading `src/alerts.ts` + `src/main.ts`:
   there is NO simulation hook, test mode, or query param to fake it.
 - A 5% move will not happen during a ~3-minute recording. The
   recorder therefore HOLDS on the armed ETH row for shot 4 (30 s);

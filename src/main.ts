@@ -1,5 +1,5 @@
 /**
- * Glance — a glanceable CoinGecko price + alert app for Even Realities G2.
+ * Glance — a glanceable Hyperliquid price + alert app for Even Realities G2.
  *
  * Glasses (576x288): a header line plus a 4-row watchlist (BTC, ETH, SOL,
  * HYPE). Tap a row to arm/disarm a +/-5% price alert for that coin; when
@@ -12,7 +12,7 @@
  * or the simulator. When the Even bridge is absent (plain browser),
  * the app runs in phone-only mode after a short timeout.
  *
- * Data: CoinGecko public API, keyless, polled every 60s. Read-only —
+ * Data: Hyperliquid public info API, keyless, polled every 60s. Read-only —
  * no orders, no funds, no financial advice (hackathon money-safety rule).
  */
 import './style.css'
@@ -34,7 +34,7 @@ import {
   fetchPrices,
   nextBackoffMs,
   type CoinPrice,
-} from './coingecko.ts'
+} from './hyperliquid.ts'
 import {
   checkAlert,
   createAlertState,
@@ -193,7 +193,7 @@ function renderPhone(): void {
     : 'never'
   app.innerHTML = `
     <h1>Glance</h1>
-    <p class="sub">CoinGecko prices + alerts for Even G2 &middot; Crypto &amp; DeFi track</p>
+    <p class="sub">Hyperliquid prices + alerts for Even G2 &middot; Crypto &amp; DeFi track</p>
     <p class="status">Glasses: ${bridge ? 'connected' : 'phone-only mode (no bridge)'} &middot;
     Updated: ${updatedText}${state.stale ? ' &middot; STALE (last fetch failed)' : ''}</p>
     <table>
@@ -201,7 +201,7 @@ function renderPhone(): void {
       <tbody>${rows}</tbody>
     </table>
     <p class="hint">${renderHint()}</p>
-    <p class="hint">Data: CoinGecko public API (free, no key) &middot; read-only, no orders, no funds.</p>
+    <p class="hint">Data: Hyperliquid public API (free, no key) &middot; read-only, no orders, no funds.</p>
   `
   app.querySelectorAll<HTMLButtonElement>('[data-toggle]').forEach((btn) => {
     btn.addEventListener('click', () => {
@@ -251,7 +251,7 @@ async function refresh(): Promise<void> {
     state.stale = true
     if (err instanceof RateLimitedError) {
       backoffMs = nextBackoffMs(backoffMs)
-      console.warn(`CoinGecko 429, backing off to ${backoffMs / 1000}s`)
+      console.warn(`Hyperliquid 429, backing off to ${backoffMs / 1000}s`)
     } else {
       console.warn('Price fetch failed, keeping last data:', err)
     }

@@ -2,7 +2,7 @@
 
 Terakhir diperbarui: 23 Nov 2026, ~12:30 WITA (audit pra-entry: tes 28/28, build + pack lolos ulang; naskah video, voiceover Jenny, pipeline rekaman siap; rekam video Selasa 24 Nov).
 Repo: `~/workspace/g2-hackathon/` dan https://github.com/r0ebn/glance-g2 (publik, 5 commit setelah sinkron 23 Nov, dibuat 2026-11-21T13:50:26Z). Konsep: aplikasi glanceable read-only
-CoinGecko untuk kacamata Even Realities G2, track Crypto & DeFi.
+Hyperliquid untuk kacamata Even Realities G2, track Crypto & DeFi.
 
 ## Jadwal penting
 
@@ -15,7 +15,10 @@ CoinGecko untuk kacamata Even Realities G2, track Crypto & DeFi.
 | Kamis 3 Des 18:00–22:00 WITA | Demo Day, Dubai (demo remote boleh) |
 | ≤ 7 hari setelah Demo Day | Hadiah USDT dibayar (total $10.000) |
 
-Hadiah track Crypto & DeFi: juara 1 $1.250 + kacamata G2, juara 2 $500.
+Hadiah track Crypto & DeFi: juara 1 $1.250 + kacamata G2, juara 2 $375.
+(Koreksi 23 Nov: juara 2 $375, bukan $500 — tabel hadiah di halaman
+DoraHacks; total pool $10.000 pas: Grand $2.000 + 4x$1.250 + 4x$375
++ $1.000 Telegram + $500 Community.)
 Grand Prize $2.000 + 2 pasang G2. Satu proyek hanya bisa menang satu
 hadiah uang.
 
@@ -27,15 +30,24 @@ hadiah uang.
   SDK `@evenrealities/even_hub_sdk@0.0.16`, CLI evenhub 0.2.0,
   simulator 0.9.5. Manifest `app.json` (package `com.turas.glance`).
 - **Aplikasi Glance jadi dan berfungsi**: daftar harga BTC/ETH/SOL/HYPE
-  dari CoinGecko public API (tanpa key, polling 60 detik, backoff saat
-  429), tap baris untuk arm/disarm alert ±5%, header menampilkan banner
-  ALERT saat harga melewati ambang (state machine terverifikasi 9
-  unit test; banner terpicu belum teramati live di simulator).
-  Companion UI di HP memakai logika yang sama.
-- **Unit test 28/28 lolos** (alerts 9, coingecko 8, render 11).
+  dari Hyperliquid public info API (tanpa key, polling 60 detik, backoff
+  saat 429; harga dari `allMids`, change 24h rolling dari candle 1h,
+  HYPE via pair spot @107), tap baris untuk arm/disarm alert ±5%, header
+  menampilkan banner ALERT saat harga melewati ambang (state machine
+  terverifikasi 9 unit test; banner terpicu belum teramati live di
+  simulator). Companion UI di HP memakai logika yang sama.
+- **Unit test 35/35 lolos** (alerts 9, hyperliquid 15, render 11).
 - **Build lolos** (`tsc` + Vite, `dist/` terhasilkan).
-- **Pack lolos**: `out.ehpk` 40.131 byte, `evenhub pack` sukses
+- **Pack lolos**: `out.ehpk` 40.417 byte, `evenhub pack` sukses
   (min_app_version 2.2.10). File `.ehpk` opsional untuk submission.
+- **Data source PINDAH CoinGecko → Hyperliquid 23 Nov 2026** (keputusan
+  doom 12:39 WITA): CoinGecko TIDAK tercantum di daftar aplikasi Track 02
+  (verifikasi ganda ke halaman DoraHacks), Hyperliquid tercantum. Klien
+  baru `src/hyperliquid.ts` + 15 tes; `src/coingecko.ts` dihapus lokal
+  (versi CoinGecko tersimpan di histori GitHub). Simulator diverifikasi
+  ulang 23 Nov (sim-check PASSED, harga live Hyperliquid tampil di
+  framebuffer, toggle alert bekerja, 0 error console; bukti di
+  `docs/sim-2026-11-23/`).
 - **Simulator terverifikasi END-TO-END di VM ini** (21 Nov 2026,
   sim-check PASSED):
   - Aplikasi dimuat, bridge terhubung (`[glance] ready (bridge: connected)`).
@@ -101,10 +113,13 @@ simulator gratis sudah cukup untuk build, uji, dan demo.
 
 ## Batasan yang sudah diverifikasi
 
-- Track Crypto & DeFi HANYA mengizinkan Polymarket, Kalshi,
-  Hyperliquid, CoinGecko, Gram Wallet, Trust Wallet. Data screener v2
-  (DEX Screener/pump.fun) TIDAK boleh dipakai — aplikasi ini hanya
-  memakai CoinGecko.
+- Track Crypto & DeFi HANYA mengizinkan 4 aplikasi (verifikasi 23 Nov,
+  browser masuk DoraHacks + teks halaman): Gram Wallet, Polymarket,
+  Hyperliquid, Trust Wallet. CoinGecko dan Kalshi TIDAK tercantum,
+  padahal catatan 21 Nov menyebut 6 aplikasi termasuk CoinGecko.
+  Aplikasi ini SUDAH pindah ke Hyperliquid 23 Nov 2026 (keputusan doom
+  12:39 WITA); CoinGecko tidak lagi dipakai di mana pun. Data screener v2
+  (DEX Screener/pump.fun) TIDAK boleh dipakai.
 - Demo harus read-only / testnet / paper trading. Aplikasi ini
   read-only: tidak ada dana pengguna, tidak ada kunci, tidak ada
   saran finansial.

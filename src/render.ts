@@ -4,7 +4,7 @@
  * The G2 canvas is 576x288 monochrome green. Rows must stay short:
  * keep every list item at or under 32 characters so it fits one line.
  */
-import type { CoinPrice } from './coingecko.ts'
+import type { CoinPrice } from './hyperliquid.ts'
 import { alertMarker, type AlertState } from './alerts.ts'
 
 export const MAX_ROW_CHARS = 32
