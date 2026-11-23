@@ -1,7 +1,7 @@
 # Glance — Status persiapan G2 Hackathon
 
-Terakhir diperbarui: 23 Nov 2026, ~12:30 WITA (audit pra-entry: tes 28/28, build + pack lolos ulang; naskah video, voiceover Jenny, pipeline rekaman siap; rekam video Selasa 24 Nov).
-Repo: `~/workspace/g2-hackathon/` dan https://github.com/r0ebn/glance-g2 (publik, 5 commit setelah sinkron 23 Nov, dibuat 2026-11-21T13:50:26Z). Konsep: aplikasi glanceable read-only
+Terakhir diperbarui: 23 Nov 2026, ~13:00 WITA (switch Hyperliquid selesai: tes 35/35, build + pack lolos, sim terverifikasi harga live, repo 41 file 12 commit; rekam video Selasa 24 Nov).
+Repo: `~/workspace/g2-hackathon/` dan https://github.com/r0ebn/glance-g2 (publik, 41 file, 12 commit setelah push hitungan 23 Nov, dibuat 2026-11-21T13:50:26Z). Konsep: aplikasi glanceable read-only
 Hyperliquid untuk kacamata Even Realities G2, track Crypto & DeFi.
 
 ## Jadwal penting
@@ -25,7 +25,7 @@ hadiah uang.
 ## Yang sudah siap
 
 - **Registrasi DoraHacks SELESAI 21 Nov 2026** — akun lakusaturas, GitHub @r0ebn terhubung, solo, Demo Day remote. Dikonfirmasi di chat utama 21 Nov 21:23 WITA.
-- **Repo publik SELESAI 21 Nov 2026** — https://github.com/r0ebn/glance-g2, publik, 4 commit, 25 file (21 file + 3 screenshot simulator + out.ehpk), diverifikasi 22 Nov 09:34 WITA lewat halaman GitHub (commit terbaru 4fa24e1407b6dcbf900494741124122c9274ec97). Sinkron audit 23 Nov: +9 file (naskah video, pipeline rekaman, teks narasi) → 34 file, 5 commit.
+- **Repo publik SELESAI 21 Nov 2026** — https://github.com/r0ebn/glance-g2, publik, 4 commit, 25 file (21 file + 3 screenshot simulator + out.ehpk), diverifikasi 22 Nov 09:34 WITA lewat halaman GitHub (commit terbaru 4fa24e1407b6dcbf900494741124122c9274ec97). Sinkron audit 23 Nov: +9 file (naskah video, pipeline rekaman, teks narasi) → 34 file, 5 commit. Switch Hyperliquid 23 Nov: +4 file (klien + tes + hl-verify.py + LICENSE), 2 file CoinGecko dihapus, +5 biner (out.ehpk baru + .gitkeep + 4 screenshot) → 41 file, 11 commit; push hitungan final → 12 commit.
 - **Repo lengkap di `~/workspace/g2-hackathon/`**: Vite + TypeScript,
   SDK `@evenrealities/even_hub_sdk@0.0.16`, CLI evenhub 0.2.0,
   simulator 0.9.5. Manifest `app.json` (package `com.turas.glance`).

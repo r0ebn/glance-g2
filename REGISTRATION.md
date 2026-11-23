@@ -42,7 +42,9 @@ Dikonfirmasi di chat utama 21 Nov 21:23 WITA; repo publik https://github.com/r0e
 - The repo must be public so judges can open it.
 - DONE 21 Nov 2026: `github.com/r0ebn/glance-g2` (publik, 4 commit, 25 file).
   Sinkron audit 23 Nov: +9 file (naskah video, pipeline rekaman, teks narasi)
-  → 34 file, 5 commit.
+  → 34 file, 5 commit. Switch Hyperliquid 23 Nov: +4 file (klien + tes +
+  hl-verify.py + LICENSE), 2 file CoinGecko dihapus, +5 biner (out.ehpk baru +
+  .gitkeep + 4 screenshot) → 41 file, 11 commit; push hitungan final → 12 commit.
 
 ## 4. Even Realities developer access (NOT required for this entry)
 
