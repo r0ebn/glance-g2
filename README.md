@@ -3,6 +3,8 @@
 Entry for the **Heads Up: Even Realities Hackathon** (TVM Ventures × Daos Hub),
 **Track 02 · Crypto & DeFi**. Solo entry by Turas (@r0ebn).
 
+Demo video (1:08, simulator): https://youtu.be/bPydQFoF-Qk
+
 ## The problem
 
 A trader who follows crypto checks prices dozens of times a day, each time
@@ -38,6 +40,15 @@ they armed the alert, the glasses say so.
   CoinGecko on 23 Nov 2026: CoinGecko is not on the track's list.
 - **Read-only.** No orders, no bets, no funds held, no financial advice.
 - No API keys or secrets anywhere in the repo or the app.
+
+## Feature requests for the Hyperliquid API
+
+Things the API we used was missing (the hackathon asks for up to 5):
+1. **24h change in `allMids`.** The mid-price response carries no 24h change, so we fetch four 1h candles and compute it from the candle covering 24h ago.
+2. **24h high, low and volume per asset in one call.** There is no single-call 24h stats endpoint, so the watchlist has change but no high/low/volume.
+3. **A WebSocket stream for mid-price updates.** The info endpoint is request/response only, so we poll every 60 seconds; a push stream would let alerts fire promptly and save polling.
+4. **Symbol-based lookup for spot pairs.** Spot pairs are addressed by index (HYPE/USDC is @107), discoverable only through `spotMeta`; a symbol-based price/candle lookup would remove a fragile mapping.
+5. **Candle snapshot with a simple 'last N candles' request.** `candleSnapshot` requires explicit start and end times; a count-based default would simplify clients.
 
 ## What existed before Nov 23 (rule disclosure)
 
